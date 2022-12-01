@@ -19,7 +19,8 @@
 import java.util.*; 
 import java.io.*; 
 import java.security.*;
-import sun.misc.BASE64Encoder;
+// import sun.misc.BASE64Encoder;
+import java.util.Base64;
 
 public class MiniPasswordManager { 
 
@@ -64,7 +65,7 @@ public class MiniPasswordManager {
           md = MessageDigest.getInstance("SHA-256"); 
           md.update(preimage.getBytes("UTF-8")); 
           byte raw[] = md.digest(); 
-          return (new sun.misc.BASE64Encoder().encode(raw)); 
+          return (new String(Base64.getDecoder().decode(raw))); 
      } 
 
      /** returns true iff the username and password are in the database */
